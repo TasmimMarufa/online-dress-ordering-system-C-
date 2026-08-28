@@ -1,0 +1,193 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>@ViewData["Title"] - Molla</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="@Url.Content("~/website/css/bootstrap.min.css")">
+    <link rel="stylesheet" href="@Url.Content("~/website/css/style.css?v=2")">
+    <link rel="stylesheet" href="@Url.Content("~/website/css/all.min.css")">
+    <link rel="stylesheet" href="@Url.Content("~/website/css/uicons-regular-rounded.css")">
+    <link rel="stylesheet" href="@Url.Content("~/website/css/responsive.css")">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <!-- Top bar -->
+        <div class="top-bar d-flex justify-content-between">
+            <div>Call: +98 765 432</div>
+
+            <div class="header-right">
+
+                <!-- Login / Logout -->
+                <div class="right-area">
+                    <ul>
+                        <li>
+                            <ul>
+                                @if (string.IsNullOrEmpty(ViewBag.checkSession))
+                                {
+                                    <li><a href="@Url.Action("Login", "customer")">Login</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="@Url.Action("customerLogout", "customer")">Logout</a></li>
+                                }
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Account -->
+                <div class="header-dropdown-link ms-3">
+                    <div class="account">
+                        <a href="@Url.Action("customerProfile", "customer")" title="My account">
+                            <div class="icon"><i class="fa fa-user"></i></div>
+                            <p>Account</p>
+                        </a>
+
+                    </div>
+                </div>
+
+                <!-- CART -->
+                <div class="header-dropdown-link ms-3">
+                    <div class="cart">
+                        <a href="@Url.Action("fetchCart", "Customer")"
+                           class="d-flex align-items-center position-relative">
+                            <div class="icon">
+                                <i class="fi fi-rr-user"></i>
+                            </div>
+                            <p>Cart</p>
+
+                            <span id="cartCount" style="
+                            position:absolute;
+                            top:-6px;
+                            right:-10px;
+                            background:#ff3c3c;
+                            color:#fff;
+                            font-size:11px;
+                            width:18px;
+                            height:18px;
+                            border-radius:50%;
+                            display:flex;
+                            align-items:center;
+                            justify-content:center;">0</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Logo + Menu -->
+        <div class="w-100 bg-white main-pd">
+            <div class="container d-flex justify-content-between align-items-center">
+                <a asp-controller="Customer" asp-action="Index">
+                    <img src="@Url.Content("~/website/images/logo.webp")" height="40" />
+                </a>
+
+                <nav class="main-navigation">
+                    <ul class="main-menu d-flex list-unstyled mb-0">
+                        <li><a asp-controller="Customer" asp-action="Index">Home</a></li>
+                        <li>
+                            <a href="#">Categories</a>
+                            <ul class="children">
+                                <partial name="fetchCategoryList" model="@(ViewData["category"] as List<Category>)" />
+                            </ul>
+                        </li>
+                        <li><a href="@Url.Action("feedback", "customer")">Contact Us</a></li>
+                        <li>
+                            <a href="@Url.Action("MyOrders", "Customer")" >
+                                My Orders
+                            </a>
+                        </li>
+                        <li><a href="@Url.Action("fetchAllDress", "Customer")">Product</a></li>
+                        <li><a href="@Url.Action("Blog", "Customer")">Blog</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    @RenderBody()
+
+    <footer class="footer mt-5">
+        <div class="container py-5 text-center">
+            © 2025 Molla. All rights reserved.
+        </div>
+    </footer>
+
+
+    <!-- ================= CHATBOT ================= -->
+
+    <div id="chatbot">
+        <div id="chatbot-header">Chat with us</div>
+        <div id="chatbot-body"></div>
+        <div id="chatbot-input">
+            <input type="text" id="chatInput" placeholder="Type your message..." />
+            <button type="button" onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <button id="chatbot-toggle" type="button">💬</button>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const chatbot = document.getElementById("chatbot");
+            const toggle = document.getElementById("chatbot-toggle");
+            const body = document.getElementById("chatbot-body");
+
+            toggle.onclick = () => {
+                chatbot.style.display = chatbot.style.display === "flex" ? "none" : "flex";
+            };
+
+            window.sendMessage = function () {
+                const input = document.getElementById("chatInput");
+                const msg = input.value.trim();
+                if (!msg) return;
+
+                body.innerHTML += `<div><strong>You:</strong> ${msg}</div>`;
+
+                const reply = getBotReply(msg.toLowerCase());
+
+                setTimeout(() => {
+                    body.innerHTML += `<div><strong>Bot:</strong> ${reply}</div>`;
+                    body.scrollTop = body.scrollHeight;
+                }, 500);
+
+                input.value = "";
+            }
+
+            function getBotReply(message) {
+
+                const replies = [
+                    "We have amazing collections for Men, Women, Teens and Children. What are you shopping for today?",
+                    "Looking for something special? Our summer sale is up to 50% off!",
+                    "Need help choosing an outfit? Tell me the occasion and I’ll suggest something perfect 👗",
+                    "We offer fast delivery and easy returns on all clothing items.",
+                    "Our best sellers include dresses, sneakers, t-shirts, jackets and accessories.",
+                    "Do you prefer casual wear or formal wear?",
+                    "We just added new arrivals this week — want to see them?"
+                ];
+
+                if (message.includes("men")) return "Great choice! Our Men's collection includes shirts, jeans, jackets and shoes.";
+                if (message.includes("women")) return "Our Women's collection is very popular — dresses, tops, bags and more!";
+                if (message.includes("teen")) return "Teens love our hoodies, sneakers and street style outfits!";
+                if (message.includes("child")) return "We have comfy and stylish clothing for children of all ages 👶🧒";
+                if (message.includes("price") || message.includes("cost")) return "Our prices are very affordable and we also have ongoing discounts.";
+                if (message.includes("delivery")) return "Delivery usually takes 2–4 business days.";
+                if (message.includes("return")) return "No worries — we offer 7-day easy returns.";
+
+                return replies[Math.floor(Math.random() * replies.length)];
+            }
+        });
+    </script>
+
+    <script src="@Url.Content("~/website/js/bootstrap.bundle.min.js")"></script>
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>

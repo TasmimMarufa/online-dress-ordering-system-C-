@@ -1,0 +1,53 @@
+﻿@model List<Dress>
+
+@{
+    ViewData["Title"] = "DressDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+
+    <h2 class="mb-4 text-center">Dress Details</h2>
+
+    <div class="row mt-3">
+
+        @foreach (var pro in Model)
+        {
+            <div class="col-md-5">
+                <img src="~/dress_image/@pro.dress_image"
+                     class="img-fluid rounded shadow"
+                     style="width:100%; max-height:420px; object-fit:cover;"
+                     asp-append-version="true" />
+            </div>
+
+            <div class="col-md-1"></div>
+
+            <div class="col-md-6">
+
+                <h3>@pro.dress_name</h3>
+
+                <h4 class="text-primary mt-2">৳ @pro.dress_price</h4>
+
+                <p class="mt-3">
+                    <strong>Description:</strong><br />
+                    @pro.dress_description
+                </p>
+
+                <div class="mt-4">
+
+                    <a class="btn btn-warning me-2" href="#">
+                        <i class="fi fi-rr-shopping-bag"></i> Add To Cart
+                    </a>
+
+                    <a class="btn btn-primary" href="#">
+                        <i class="fi fi-rr-credit-card"></i> Buy Now
+                    </a>
+
+                </div>
+
+            </div>
+        }
+
+    </div>
+
+</div>

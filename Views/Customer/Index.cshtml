@@ -1,0 +1,213 @@
+﻿@{
+    ViewData["Title"] = "Customer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="hero-slider">
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+                <div class="slide-content"
+                     style="background-image:url('@Url.Content("~/website/images/resources/slide-1.webp")')">
+                    <div class="container swiper-tl">
+                        <div class="content">
+                            <div class="content-width">
+                                <div class="anime up title">LIMITED TIME ONLY.</div>
+                                <div class="anime left subtitle">
+                                    SUMMER <span class="text-primary">SALE</span>
+                                </div>
+                                <div class="anime right description">UP TO 50% OFF</div>
+                                <div class="anime down button">
+                                    <a class="btn btn-outline" href="#">
+                                        SHOP NOW <i class="fa-solid fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="promo-section py-5">
+    <div class="container">
+        <div class="row g-4">
+
+            <div class="col-lg-4">
+                <div class="promo-card">
+                    <div class="promo-image"
+                         style="background-image:url('@Url.Content("~/website/images/resources/block-1-1.webp")')">
+                        <div class="promo-content">
+                            <h4>Final reduction</h4>
+                            <h3>Sandals & Flip Flops<br>up to 60% off</h3>
+                            <a href="#" class="btn btn-outline-primary">SHOP NOW</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="promo-card">
+                    <div class="promo-image"
+                         style="background-image:url('@Url.Content("~/website/images/resources/block-1-2.webp")')">
+                        <div class="promo-content">
+                            <h4>Limited time only</h4>
+                            <h3>Trainers & Sportwear<br>40–70% off</h3>
+                            <a href="#" class="btn btn-outline-primary">SHOP NOW</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="promo-card">
+                    <div class="promo-image"
+                         style="background-image:url('@Url.Content("~/website/images/resources/block-1-3.webp")')">
+                        <div class="promo-content">
+                            <h4>This week we love</h4>
+                            <h3>Women's Accessories<br>from $6.99</h3>
+                            <a href="#" class="btn btn-outline-primary">SHOP NOW</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- ================= PRODUCTS ANCHOR ================= -->
+<section class="reveal-section">
+    <partial name="fetchDress" model="@(ViewData["dress"] as List<Dress>)" />
+    <div class="w-100 img-set" style="margin-top:60px;">
+        <div class="container">
+
+            <div class="row">
+                <div class="sec-tl text-center">
+                    <h1>Coming Soon</h1>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <!-- Product 1 -->
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="block-product">
+                        <div class="product-thumb position-relative">
+                            <a href="#"><img src="@Url.Content("~/website/images/resources/prd-5.jpg")" class="img-fluid"></a>
+                            <a href="#" class="ad-cart position-absolute text-center"><span>Add to Cart</span></a>
+                            <div class="product-btns position-absolute">
+                                <a class="wishlist-btn" href="#"><i class="fi fi-rr-heart"></i></a>
+                                <a class="cart-btn" href="#"><i class="fi-rr-shopping-bag"></i></a>
+                                <a class="expand-btn" href="#"><i class="fi fi-rr-picture"></i></a>
+                            </div>
+                        </div>
+                        <div class="product-body text-center">
+                            <a href="#" class="brand-name">Molla</a>
+                            <h2 class="product-name"><a href="#">Denim jacket</a></h2>
+                            <span class="product-price">$19.99</span>
+                            <div class="prd-options">
+                                <ul class="list-unstyled d-flex gap-2 justify-content-center">
+                                    <li><img src="@Url.Content("~/website/images/resources/s-prd-1.jpg")"></li>
+                                    <li><img src="@Url.Content("~/website/images/resources/s-prd-2.jpg")"></li>
+                                    <li><img src="@Url.Content("~/website/images/resources/s-prd-3.jpg")"></li>
+                                    <li><img src="@Url.Content("~/website/images/resources/s-prd-4.jpg")"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="block-product">
+                        <div class="product-thumb position-relative">
+                            <a href="#"><img src="@Url.Content("~/website/images/resources/prd-6.jpg")" class="img-fluid"></a>
+                            <a href="#" class="ad-cart position-absolute text-center"><span>Add to Cart</span></a>
+                            <div class="product-btns position-absolute">
+                                <a class="wishlist-btn" href="#"><i class="fi fi-rr-heart"></i></a>
+                                <a class="cart-btn" href="#"><i class="fi-rr-shopping-bag"></i></a>
+                                <a class="expand-btn" href="#"><i class="fi fi-rr-picture"></i></a>
+                            </div>
+                        </div>
+                        <div class="product-body text-center">
+                            <a href="#" class="brand-name">Molla</a>
+                            <h2 class="product-name"><a href="#">Sandals</a></h2>
+                            <span class="product-price">$24.99</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="block-product">
+                        <div class="product-thumb position-relative">
+                            <a href="#"><img src="@Url.Content("~/website/images/resources/prd-7.jpg")" class="img-fluid"></a>
+                            <span class="position-absolute sv">Save 38%</span>
+                            <a href="#" class="ad-cart position-absolute text-center"><span>Add to Cart</span></a>
+                            <div class="product-btns position-absolute">
+                                <a class="wishlist-btn" href="#"><i class="fi fi-rr-heart"></i></a>
+                                <a class="cart-btn" href="#"><i class="fi-rr-shopping-bag"></i></a>
+                                <a class="expand-btn" href="#"><i class="fi fi-rr-picture"></i></a>
+                            </div>
+                        </div>
+                        <div class="product-body v2 text-center">
+                            <a href="#" class="brand-name">Molla</a>
+                            <h2 class="product-name"><a href="#">Printed sweatshirt</a></h2>
+                            <span class="product-price">$7.99 <del>$12.99</del></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="block-product">
+                        <div class="product-thumb position-relative">
+                            <a href="#"><img src="@Url.Content("~/website/images/resources/prd-8.jpg")" class="img-fluid"></a>
+                            <a href="#" class="ad-cart position-absolute text-center"><span>Add to Cart</span></a>
+                            <div class="product-btns position-absolute">
+                                <a class="wishlist-btn" href="#"><i class="fi fi-rr-heart"></i></a>
+                                <a class="cart-btn" href="#"><i class="fi-rr-shopping-bag"></i></a>
+                                <a class="expand-btn" href="#"><i class="fi fi-rr-picture"></i></a>
+                            </div>
+                        </div>
+                        <div class="product-body text-center">
+                            <a href="#" class="brand-name">Molla</a>
+                            <h2 class="product-name"><a href="#">Linen-blend paper bag trousers</a></h2>
+                            <span class="product-price">$17.99</span>
+                            <div class="prd-options">
+                                <ul class="list-unstyled d-flex gap-2 justify-content-center">
+                                    <li><img src="@Url.Content("~/website/images/resources/s-prd-5.jpg")"></li>
+                                    <li><img src="@Url.Content("~/website/images/resources/s-prd-6.jpg")"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+<div class="row mt-4">
+    <div class="col-12 text-center">
+        <a href="@Url.Action("fetchAllDress", "Customer")" class="btn btn-outline-primary">
+            View More Dresses
+        </a>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            loop: true,
+            autoplay: { delay: 4000 }
+        });
+    </script>
+}
